@@ -13,9 +13,14 @@ $(document).ready(function(){
   init_inverted()
   update(steps)
 
-  $("#prefs_link").click(function(){
-    var b = ($("#prefs").css("bottom") == "-42px" ? 0 : "-42px")
-    $("#prefs").animate({ bottom: b })
+  $("#templates").wrap($("<div id=\"template_wrap\"></div>"))
+  $("a.close").livequery("click", function(){
+    $(this).parent("div").fadeOut("fast")
+    return false
+  })
+  $("a.open").livequery("click", function(){
+    $("#templates").slideDown("fast")
+    return false
   })
   
   replace_submits()
@@ -71,11 +76,12 @@ var human_time = function(seconds) {
 
 var init_inverted = function(){
   $("#container").after("<div id=\"inverted_wrap\"></div>")
-  $("#inverted_wrap").html("<div id=\"inverted\"><h1 class=\"time\"></h1></div>")
+  $("#inverted_wrap").html("<div id=\"inverted\"></div>")
+  $("#inverted").html($("#container").html())
 }
 
 var inverted = function(step){
-  $("#inverted h1").html($("#container h1").html()).width(document.width)
+  $("#inverted").html($("#container").html()).width(document.width)
   $("#inverted_wrap").width((document.width-(document.width/steps)*step))
 }
 
@@ -95,8 +101,8 @@ var replace_submits = function() {
   });
   
   $("a.button").cornerz({
-    radius:5,
-    background: "#369"
+    radius: 5,
+    background: "#eee"
   })
 }
 

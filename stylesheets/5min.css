@@ -1,7 +1,3 @@
-* { 
-  margin: 0;
-  padding: 0;
-}
 body {
   background: #fff;
   font: bold 16px "Helvetica Neue", "Helvetica", Arial, sans-serif;
@@ -21,48 +17,103 @@ a {
   text-decoration: none;
 }
 input.text {
-/*  border: 1px solid #ccc;*/
-  border: 0;
-  background: #246;
-  font-size: 1.1em;
-  color: #fff;
-  vertical-align: top;
+  border: 1px solid #666;
+  border-right-color: #999;
+  border-bottom-color: #999;
+  background: #eee;
+  font-size: 1em;
+  color: #444;
+  vertical-align: middle;
 }
 
-#prefs,
+a.open {
+  display: block;
+  width: 140px;
+  height: 50px;
+  margin: 0 auto;
+  background: url("/images/indstil.png") no-repeat 0 0;
+}
+  a.open:hover { background-position: 0 -50px; }
+  a.open:active { background-position: 0 -100px; }
+  a.open span {
+    display: none;
+  }
+
 #detersmart {
   position: absolute;
   bottom: 0;
   z-index: 1000;
-}
-#prefs {
-  background: #369;
-  padding: 10px 20px;
-  left: 0px;
-  bottom: -42px;
-  height: 22px;
-  color: #fff;
-  text-shadow: #000 0 0 0;
-}
-#prefs_link {
-  position:absolute;
-  margin-top: -35px;
-  left: 0;
-  padding: 5px 15px;
-  height: 15px;
-  background: #369;
-  color: #fff;
-  text-decoration: none;
-  font-size: .8em;
-  font-weight: bold;
-  text-transform: uppercase;
-  text-shadow: #000 0 0 0;
-}
-
-#detersmart {
   padding: 10px;
   right: 0px;
 }
+
+#template_wrap {
+  padding-left: 50%;
+}
+#templates {
+  position: absolute;
+  text-align: left;
+  margin-left: -150px;
+  display: none;
+  width: 300px;
+  border: 2px solid #666;
+  background: #f1f1f1;
+  top: 110px;
+  z-index: 1200;
+  
+  background: url("/images/grad.png") repeat-x bottom left;
+}
+  #templates a.close {
+    position: absolute;
+    margin-left: 285px;
+    margin-top: -15px;
+  }
+  #templates ul {
+  }
+    #templates li a {
+      display: block;
+      border-bottom: 1px solid #aaa;
+      padding: 10px 15px;
+      padding-left: 32px;
+      font-weight: normal;
+      font-size: .9em;
+      color: #555;
+      background: transparent none no-repeat 2px 8px;
+    }
+    #templates li a:hover {
+      border-color: #777;
+      color: #333;
+    }
+    #templates li a:active {
+      background: #ccc;
+    }
+    #templates li span {
+      position: absolute;
+      margin-top: -2.4em;
+      font-size: .7em;
+      width: 40px;
+      margin-left: 245px;
+      text-align: right;
+    }
+    #templates li {
+      background: url("/images/grad.png") repeat-x bottom left;
+    }
+    #templates li.aeg a {
+      background-image: url("/images/bullet_aeg.png");
+    }
+    #templates li.kartoffel a {
+      background-image: url("/images/bullet_kartoffel.png");
+    }
+    #templates li.zzz a {
+      background-image: url("/images/bullet_zzz.png");
+    }
+  #templates form {
+    padding: 10px 15px;
+  }
+    #templates form p.fright {
+      padding-top: 3px;
+    }
+  
 #container,
 #inverted_wrap {
   position: absolute;
