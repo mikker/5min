@@ -39,6 +39,24 @@ a.open {
     display: none;
   }
 
+#sound {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+#sound_off {
+  display: none;
+}
+a#sound_check {
+  display: block;
+  height: 43px;
+  width: 43px;
+  background: url("/images/sound.png") no-repeat 0 0;
+}
+a#sound_check.off {
+  background-position: 0 -43px;
+}
+
 #detersmart {
   position: absolute;
   bottom: 0;
@@ -85,7 +103,7 @@ a.open {
       color: #333;
     }
     #templates li a:active {
-      background: #ccc;
+      background-color: #ccc;
     }
     #templates li span {
       position: absolute;

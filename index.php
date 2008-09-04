@@ -44,6 +44,11 @@
       </form>
     </div>
 
+    <div id="sound">
+      <a href="" id="sound_check"></a>
+      <input type="checkbox" name="sound_off" id="sound_off"/>
+    </div>
+
     <div id="detersmart">
       <a href="http://detersmart.dk" title="Det Er Smart">DetErSmart.dk</a>
     </div>

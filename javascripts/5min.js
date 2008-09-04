@@ -23,6 +23,18 @@ $(document).ready(function(){
     return false
   })
   
+  $("#sound_check").livequery("click", function(){
+    var cb = $("#sound_off")
+    if (cb.attr("checked") != 1) {
+      $(this).addClass("off")
+      cb.attr("checked", 1)
+    } else {
+      $(this).removeClass("off")
+      cb.removeAttr("checked")
+    }
+    return false
+  })
+  
   replace_submits()
 })
 
