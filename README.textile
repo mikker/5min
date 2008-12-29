@@ -1,3 +1,6 @@
 h1. Source code for 5min.dk
 
 Feel free to roll your own. Just throw me a link back.
+
+The PHP isn't really needed. *I've thought about doing it in pure js and use #'s instead of the ?params-string*. 
+I would so want to throw PHP off a cliff. Just for the sake of having moved along from it.
