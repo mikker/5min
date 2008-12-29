@@ -1,0 +1,3 @@
+h1. Source code for 5min.dk
+
+Feel free to roll your own. Just throw me a link back.
