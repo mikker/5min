@@ -19,12 +19,10 @@
     <script src="/javascripts/5min.js" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
-    
     <div id="container">
       <h1 class="time"></h1>
       <p><a href="#" class="open"><span>Indstil</span></a></p>
     </div>
-
     <div id="templates">
       <a href="#" class="close"><img src="/images/closebox.png" alt="" /></a>
       <ul>
@@ -43,16 +41,13 @@
         </p>
       </form>
     </div>
-
     <div id="sound">
       <a href="" id="sound_check"></a>
       <input type="checkbox" name="sound_off" id="sound_off"/>
     </div>
-
     <div id="detersmart">
       <a href="http://detersmart.dk" title="Det Er Smart">DetErSmart.dk</a>
     </div>
-    
     <script type="text/javascript">
       var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
       document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
