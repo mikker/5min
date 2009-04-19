@@ -14,7 +14,7 @@
     <script src="/javascripts/jquery.livequery.pack.js" type="text/javascript" charset="utf-8"></script>
     <script src="/javascripts/soundmanager2-nodebug-jsmin.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" charset="utf-8">
-      var minutes = <?= isset($_GET['minutes']) ? $_GET['minutes'] : "null" ?>
+      var minutes = <%= params[:minutes] ? params[:minutes] : "null" %>
     </script>
     <script src="/javascripts/5min.js" type="text/javascript" charset="utf-8"></script>
   </head>
@@ -37,7 +37,7 @@
           <input type="submit" class="submit" id="custom_submit" value="Genstart"/>
         </p>
         <p>
-          <input type="text" class="text" name="minutes" value="<?= isset($_GET['minutes']) ? $_GET['minutes'] : "5" ?>" id="minutes" size="3" /> minutter
+          <input type="text" class="text" name="minutes" value="<%= params[:minutes] ? params[:minutes] : "5" %>" id="minutes" size="3" /> minutter
         </p>
       </form>
     </div>
