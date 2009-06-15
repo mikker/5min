@@ -142,6 +142,9 @@ a#sound_check.off {
     #templates li {
       background: url("/images/grad.png") repeat-x bottom left;
     }
+    #templates li.kcast a {
+      background-image: url("/images/bullet_kcast.png");
+    }
     #templates li.aeg a {
       background-image: url("/images/bullet_aeg.png");
     }
