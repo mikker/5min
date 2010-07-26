@@ -1,30 +1,72 @@
-// Hvor lang timer
-var multiplier = 4;
-if (minutes == null) { var minutes = 5; }
-var steps = minutes*60*multiplier;
+var Egg = {
+  seconds: null,
+  steps: null,
+  step: null,
+  settings: {
+    fps: 4,
+    onUpdate: function(timer){},
+    onFinish: function(){}
+  },
 
-// Initialiser soundManager-klassen
-soundManager.url = "/";
-soundManager.debugMode = false;
-soundManager.onload = function() {}
+  update: function(step){
+    this.step = step
+    this.seconds = Math.round(step/this.settings.fps)
+    if (this.seconds >= 0) {
+      this.settings.onUpdate(this)
+      var timer = this
+      setTimeout(function(){
+        timer.update(step-1)
+      },1000/this.settings.fps);
+    } else {
+      this.settings.onFinish()
+    }
+  },
 
-// Spark første runde i gang, når DOM er klar
-$(document).ready(function(){
+  timer: function(seconds, settings){
+    this.settings = $.extend(this.settings, settings)
+    this.steps = seconds*this.settings.fps
+    this.update(this.steps)
+    return this
+  }
+}
 
-  init_inverted();
-  update(steps);
+$(function(){
 
-  $("#templates").wrap($("<div id=\"template_wrap\"></div>"));
-  $("a.close").livequery("click", function(){
-    $(this).parent("div").fadeOut("fast");
-    return false;
-  });
-  $("a.open").livequery("click", function(){
-    $("#templates").slideDown("fast");
-    return false;
-  });
-  
-  $("#sound_check").livequery("click", function(){
+  var minutes = window.location.search.length > 1 ?
+    parseFloat(window.location.search.split("?")[1]) : 5
+
+  Egg.timer(minutes*60, {
+    onUpdate: function(timer) {
+      $(".time").html(secondsToMinutes(timer.seconds))
+      $("#inverted_wrap").width((document.width-(document.width/timer.steps)*timer.step));
+    },
+    onFinish: function(timer) {
+      var message = "<p>Så' det tilbage til noget fornuftigt</p>"
+      $(".time").html("nul").addClass("greyed").after(message)
+      if ($("#sound_off").attr("checked") != 1) honk()
+    }
+  })
+
+  $("#container").after("<div id=\"inverted_wrap\"> \
+    <div id=\"inverted\">"+$("#container").html()+"</div> \
+  </div>");
+  $("#inverted").width(document.width)
+
+  $("a.close").live("click", function(){
+    $(this).parent("div").fadeOut("fast")
+    return false
+  })
+  $("a.open").live("click", function(){
+    $("#templates").slideDown("fast")
+    return false
+  })
+
+  $("form#custom").bind('submit',function(e){
+    e.preventDefault()
+    window.location = '/?'+$("input#minutes").attr("value")
+  })
+
+  $("#sound_check").live("click", function(){
     var cb = $("#sound_off");
     if (cb.attr("checked") != 1) {
       $(this).addClass("off");
@@ -35,86 +77,22 @@ $(document).ready(function(){
     }
     return false;
   })
-  replace_submits();
+
 })
 
-var update = function(step) {
-  // Hvis der er mere end 0 tilbage
-  var seconds = Math.round(step/multiplier);
-  if (seconds >= 0) {
-    // Tekst-format
-    clock = format(seconds);
-    $(".time").html(clock);
-    document.title = clock;
-    // Opdater inverted
-    inverted(step+multiplier/2);
-    // Forfra om ét sek
-    setTimeout(function(){
-      update(step-1);
-    },1000/multiplier);
-  } else {
-    var message = $("<p>Så' det tilbage til noget fornuftigt</p>");
-    // Skriv "nul" med grå og sæt ovenstående tekst ind under
-    $(".time").html("nul").addClass("greyed").after(message);
-    // Afspil dyttet, hvis det er slået til
-    if ($("#sound_off").attr("checked") != 1) {
-     playSound();
-    }
-  }
+function secondsToMinutes(seconds) {
+  m = Math.floor(seconds/60)
+  s = ""+(seconds-(m*60))
+  s.length == 1 ? s = "0"+s : s
+  return ""+m+":"+s
 }
 
-var playSound = function() {
-  var aHonk = soundManager.createSound({
-    id: 'honk',
-    url:'/honk.mp3'
-  });
-  aHonk.play();
+function honk() {
+  soundManager.createSound({
+    id: 'honk', url:'/honk.mp3'
+  }).play()
 }
 
-// Formatterer antallet af sekunder som x:xx
-var format = function(seconds) {
-  m = Math.floor(seconds/60); // Rund ned
-  s = ""+(seconds-(m*60)); // Resterende sekunder
-  s.length == 1 ? s = "0"+s : s;  // Force 2 digits
-  return ""+m+":"+s;
-}
-
-var human_time = function(seconds) {
-  m = Math.floor(seconds/60); // Rund ned
-  s = (seconds-(m*60)); // Resterende sekunder
-  var minutter = ["et","to","tre","fire","fem","seks","syv","otte","ni","ti"];
-  var enere = [];
-}
-
-var init_inverted = function(){
-  $("#container").after("<div id=\"inverted_wrap\"></div>");
-  $("#inverted_wrap").html("<div id=\"inverted\"></div>");
-  $("#inverted").html($("#container").html());
-}
-
-var inverted = function(step){
-  $("#inverted").html($("#container").html()).width(document.width);
-  $("#inverted_wrap").width((document.width-(document.width/steps)*step));
-}
-
-var replace_submits = function() {
-  $('input.submit').each(function() {
-    var fstext = $(this).val();
-    var fsid = $(this).attr("id");
-    var new_button = $('<a href="" rel="'+$(this).attr("id")+'" class="submit button ">'+fstext+'</a>');
-    $(this).after(new_button);
-    $(this).hide();
-  });
-
-  $('a.submit').livequery("click", function() {
-    var fsref = $(this).attr("rel");
-    $('input#'+fsref).trigger('click');
-    return false;
-  });
-  
-  $("a.button").cornerz({
-    radius: 5,
-    background: "#eee"
-  });
-}
-
+soundManager.url = "/";
+soundManager.debugMode = false;
+// soundManager.onload = function() {}
