@@ -1,0 +1,14 @@
+.btn {
+  display: inline-flex;
+  cursor: pointer;
+  align-items: center;
+  font-weight: bold;
+  font-size: inherit;
+  color: inherit;
+  background: inherit;
+  padding: 1rem;
+  border: none;
+  border-radius: 999px;
+  line-height: 1;
+  text-decoration: none;
+}

@@ -1,0 +1,14 @@
+#!/bin/bash -x
+set -e
+
+# config
+host=root@brnbw
+dir="/var/www/5min.dk/public"
+dest=dist
+
+# prepare
+yarn run build
+
+# transfer
+ssh $host "mkdir -p $dir" && rsync -ruv --no-perms $dest/* $host:$dir
+

@@ -1,0 +1,66 @@
+body { -webkit-user-select: none; }
+
+.t-all {
+  transition: all .1s linear;
+}
+
+svg.feather {
+  height: 1em;
+  width: 1em;
+  vertical-align: middle;
+}
+
+hr {
+  height: 2px;
+  border: none;
+  background: white;
+}
+
+.bg-flambouyant {
+  background: #ff7878;
+  background: #ff7878 linear-gradient(to bottom right, #ff7878, #ec1086);
+}
+
+.white {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-shadow: rgba(0, 0, 0, .2) 0 1px 0;
+}
+
+@media screen and (min-width: 64em) {
+  .f-humongous-l { font-size: 20rem; }
+}
+
+@media screen and (min-width: 48em) and (max-width: 64em) {
+  .f-enormous-m { font-size: 10rem; }
+}
+
+/*
+  Tachyons' break points for reference:
+    --breakpoint-not-small screen and (min-width: 48em);
+    --breakpoint-medium screen and (min-width: 48em) and (max-width: 64em);
+    --breakpoint-large screen and (min-width: 64em);
+*/
+
+.animated {
+  animation-duration: .2s;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
+}
+
+@keyframes fade-in-like-a-pimp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -200px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.fade-in-like-a-pimp {
+  animation-name: fade-in-like-a-pimp;
+}
+
