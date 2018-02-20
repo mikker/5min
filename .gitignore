@@ -1,7 +1,0 @@
-.DS_Store
-log/*.log
-
-bin/*
-vendor/gems/*
-!vendor/gems/cache/
-
