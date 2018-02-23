@@ -3,8 +3,8 @@ const choo = require("choo");
 const honk = require("./util/honk.js");
 
 css("./btn.css");
-css("tachyons");
 css("./style.css");
+css("tachyons");
 
 const app = choo();
 
