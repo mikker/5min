@@ -6,6 +6,8 @@ const themes = {
   light: {
     main: "bg-white near-black",
     button: "silver hover-bg-light-gray",
+    input: "bg-white-10 white b--white-20",
+    customButton: "bg-black-10 white hover-bg-black-30",
     settings: {
       main: "bg-flambouyant white"
     }
@@ -13,6 +15,8 @@ const themes = {
   dark: {
     main: "bg-near-black silver",
     button: "silver hover-bg-white-10",
+    input: "dark bg-white-10 white",
+    customButton: "bg-flambouyant white hover-bg-black",
     settings: {
       main: "bg-dark-gray near-white"
     }
@@ -82,28 +86,59 @@ function settingsElm(state, emit, theme) {
         ${button(7, "Smilende – 7 min")}
         ${button(9, "Hårdkogt – 9 min")}
         ${button(15, "Power nap – 15 min")}
-        <hr>
         <div class="flex items-center justify-center">
           ${button(25, "Pomodoro")}
           ${button(5, "pause", "f4")}
           ${button(10, "lang pause", "f4")}
         </div>
+        <hr>
+        <form onsubmit=${handleSubmit} class='f4 tc lh-solid'>
+          <input class='input ${
+            theme.input
+          } tc mr1' size='1' name='m' placeholder='0' value=${
+    state.ui.custom.m
+  } oninput=${handleInput} pattern='\\d+'> minutter
+          <input class='input ${
+            theme.input
+          } tc ml2 mr1' size='1' name='s' placeholder='0' value=${
+    state.ui.custom.s
+  } oninput=${handleInput} pattern='\\d+'> sekunder
+          <button type='submit' class='ml2 input b bn ${
+            theme.customButton
+          }'>OK</button>
+        </form>
       </nav>
     </div>
   `;
 
-  function setTimer(mins) {
+  function setTimer(secs) {
     return event => {
       emit("ui:set", { showSettings: false });
-      emit("clock:set", mins * 60);
-      emit(state.events.REPLACESTATE, `/?m=${mins}`);
+      emit("clock:set", secs);
+      emit(state.events.REPLACESTATE, `/?s=${secs}`);
     };
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    const mins = parseInt(state.ui.custom.m, 10) || 0;
+    const secs = parseInt(state.ui.custom.s, 10) || 0;
+    setTimer(mins * 60 + secs)();
+  }
+
+  function handleInput(event) {
+    const name = event.target.name;
+    const value = event.target.value;
+    const change = {
+      custom: Object.assign(state.ui.custom, { [name]: value })
+    };
+    emit("ui:set", change);
   }
 
   function button(mins, text, classNames) {
     return html`
-      <a class="btn justify-center pointer ${classNames}" onclick=${setTimer(
-      mins
+      <a class="btn justify-center pointer underline-hover ${classNames}" onclick=${setTimer(
+      mins * 60
     )}>
         ${text}
       </a>
@@ -119,4 +154,4 @@ function clockElm(state) {
   `;
 }
 
-module.exports = mainView
+module.exports = mainView;

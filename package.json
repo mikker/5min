@@ -11,6 +11,7 @@
     "test-deps": "dependency-check . && dependency-check . --extra --no-dev -i tachyons"
   },
   "dependencies": {
+    "@mikker/input": "^1.0.2",
     "choo": "^6.8.0",
     "choo-service-worker": "^2.4.0",
     "feather-icons": "^4.5.1",
