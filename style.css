@@ -1,7 +1,9 @@
 body { -webkit-user-select: none; }
 
-.t-all {
-  transition: all .1s linear;
+.t-all { transition: all .1s linear; }
+
+.tnum {
+  font-feature-settings: "tnum";
 }
 
 svg.feather {
@@ -27,6 +29,10 @@ hr {
   text-shadow: rgba(0, 0, 0, .2) 0 1px 0;
 }
 
+@media screen and (max-width: 64em) {
+  .f-headline-s { font-size: 6rem; }
+}
+
 @media screen and (min-width: 64em) {
   .f-humongous-l { font-size: 20rem; }
 }
@@ -34,13 +40,6 @@ hr {
 @media screen and (min-width: 48em) and (max-width: 64em) {
   .f-enormous-m { font-size: 10rem; }
 }
-
-/*
-  Tachyons' break points for reference:
-    --breakpoint-not-small screen and (min-width: 48em);
-    --breakpoint-medium screen and (min-width: 48em) and (max-width: 64em);
-    --breakpoint-large screen and (min-width: 64em);
-*/
 
 .animated {
   animation-duration: .2s;
@@ -63,4 +62,3 @@ hr {
 .fade-in-like-a-pimp {
   animation-name: fade-in-like-a-pimp;
 }
-

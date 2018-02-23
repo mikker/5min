@@ -113,7 +113,7 @@ function settingsElm(state, emit, theme) {
 
 function clockElm(state) {
   return html`
-    <h1 class="clock f-headline f-enormous-m f-humongous-l fw9 mv0 lh-solid">
+    <h1 class="tnum f-headline-s f-enormous-m f-humongous-l fw9 mv0 lh-solid">
       ${state.clock.display}
     </h1>
   `;
