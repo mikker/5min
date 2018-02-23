@@ -6,8 +6,8 @@ const themes = {
   light: {
     main: "bg-white near-black",
     button: "silver hover-bg-light-gray",
-    input: 'bg-white-10 white b--white-20',
-    customButton: 'bg-black-10 white hover-bg-black-30',
+    input: "bg-white-10 white b--white-20",
+    customButton: "bg-black-10 white hover-bg-black-30",
     settings: {
       main: "bg-flambouyant white"
     }
@@ -15,8 +15,8 @@ const themes = {
   dark: {
     main: "bg-near-black silver",
     button: "silver hover-bg-white-10",
-    input: 'dark bg-white-10 white',
-    customButton: 'bg-flambouyant white hover-bg-black',
+    input: "dark bg-white-10 white",
+    customButton: "bg-flambouyant white hover-bg-black",
     settings: {
       main: "bg-dark-gray near-white"
     }
@@ -93,13 +93,19 @@ function settingsElm(state, emit, theme) {
         </div>
         <hr>
         <form onsubmit=${handleSubmit} class='f4 tc lh-solid'>
-          <input class='input ${theme.input} tc mr1' size='1' name='m' placeholder='0' value=${
-            state.ui.custom.m
-          } oninput=${handleInput} pattern='\\d+'> minutter
-          <input class='input ${theme.input} tc ml2 mr1' size='1' name='s' placeholder='0' value=${
-            state.ui.custom.s
-          } oninput=${handleInput} pattern='\\d+'> sekunder
-          <button type='submit' class='ml2 input b bn ${theme.customButton}'>OK</button>
+          <input class='input ${
+            theme.input
+          } tc mr1' size='1' name='m' placeholder='0' value=${
+    state.ui.custom.m
+  } oninput=${handleInput} pattern='\\d+'> minutter
+          <input class='input ${
+            theme.input
+          } tc ml2 mr1' size='1' name='s' placeholder='0' value=${
+    state.ui.custom.s
+  } oninput=${handleInput} pattern='\\d+'> sekunder
+          <button type='submit' class='ml2 input b bn ${
+            theme.customButton
+          }'>OK</button>
         </form>
       </nav>
     </div>

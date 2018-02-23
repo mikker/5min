@@ -5,11 +5,11 @@ function ui(state, emitter) {
       showSettings: false,
       soundOn: true,
       darkMode: false,
-      custom: { m: '', s: '' }
+      custom: { m: "", s: "" }
     },
     // then add whatever was persisted
     state.ui
-  )
+  );
 
   emitter.on("ui:set", change => {
     Object.assign(state.ui, change);

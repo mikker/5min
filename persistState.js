@@ -24,4 +24,4 @@ function persistState(key) {
   }
 }
 
-module.exports = persistState
+module.exports = persistState;

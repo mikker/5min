@@ -2,7 +2,7 @@ const css = require("sheetify");
 const choo = require("choo");
 const honk = require("./util/honk.js");
 
-css('@mikker/input');
+css("@mikker/input");
 css("./btn.css");
 css("./style.css");
 css("tachyons");
