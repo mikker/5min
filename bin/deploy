@@ -7,7 +7,7 @@ dir="/var/www/5min.dk/public"
 dest=dist
 
 # prepare
-yarn run build
+npm run build
 
 # transfer
 ssh $host "mkdir -p $dir" && rsync -ruv --no-perms $dest/* $host:$dir
