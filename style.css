@@ -62,3 +62,7 @@ hr {
 .fade-in-like-a-pimp {
   animation-name: fade-in-like-a-pimp;
 }
+
+.input:focus {
+  border-color: white;
+}
