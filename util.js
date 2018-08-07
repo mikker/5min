@@ -1,5 +1,5 @@
 const feather = require("feather-icons");
-const raw = require("bel/raw");
+const raw = require("choo/html/raw");
 
 function secsToDisplay(seconds) {
   const m = Math.floor(seconds / 60);
