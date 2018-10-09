@@ -22,7 +22,6 @@
     "bankai": "^9.7.0",
     "choo-devtools": "^2.3.3",
     "choo-scaffold": "^1.1.2",
-    "dependency-check": "^3.0.0",
-    "standard": "^11.0.0"
+    "dependency-check": "^3.0.0"
   }
 }
